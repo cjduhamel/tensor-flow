@@ -61,9 +61,10 @@ function createModel() {
 
     // Add a single hidden layer
     model.add(tf.layers.dense({ inputShape: [1], units: 1, useBias: true }));
+    model.add(tf.layers.dense({units: 100, useBias: true }));
 
     // Add an output layer
-    model.add(tf.layers.dense({ units: 1, useBias: true }));
+    model.add(tf.layers.dense({activation: 'sigmoid', units: 1, useBias: true }));
 
     return model;
 }
@@ -118,8 +119,8 @@ async function trainModel(model, inputs, labels) {
         metrics: ['mse'],
     });
 
-    const batchSize = 28;
-    const epochs = 50;
+    const batchSize = 75;
+    const epochs = 150;
 
     return await model.fit(inputs, labels, {
         batchSize,
