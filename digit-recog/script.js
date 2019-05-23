@@ -32,6 +32,7 @@ async function showExamples(data) {
 
 async function run() {  
   const data = new MnistData();
+  console.log(data);
   await data.load();
   await showExamples(data);
 
@@ -39,6 +40,9 @@ async function run() {
 tfvis.show.modelSummary({name: 'Model Architecture'}, model);
   
 await train(model, data);
+
+await showAccuracy(model, data);
+await showConfusion(model, data);
 }
 
 document.addEventListener('DOMContentLoaded', run);
@@ -142,7 +146,7 @@ function getModel() {
   
   const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 
-function doPrediction(model, data, testDataSize = 500) {
+function doPrediction(model, data, testDataSize = 2) {
   const IMAGE_WIDTH = 28;
   const IMAGE_HEIGHT = 28;
   const testData = data.nextTestBatch(testDataSize);
@@ -151,6 +155,7 @@ function doPrediction(model, data, testDataSize = 500) {
   const preds = model.predict(testxs).argMax([-1]);
 
   testxs.dispose();
+  console.log(preds)
   return [preds, labels];
 }
 
@@ -162,6 +167,8 @@ async function showAccuracy(model, data) {
   tfvis.show.perClassAccuracy(container, classAccuracy, classNames);
 
   labels.dispose();
+  console.log(classAccuracy[1])
+  console.log(classNames)
 }
 
 async function showConfusion(model, data) {
@@ -172,4 +179,5 @@ async function showConfusion(model, data) {
       container, {values: confusionMatrix}, classNames);
 
   labels.dispose();
+  console.log(confusionMatrix)
 }
