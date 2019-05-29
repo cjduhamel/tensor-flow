@@ -146,13 +146,15 @@ function getModel() {
   
   const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 
-function doPrediction(model, data, testDataSize = 2) {
+function doPrediction(model, data, testDataSize = 1) {
   const IMAGE_WIDTH = 28;
   const IMAGE_HEIGHT = 28;
   const testData = data.nextTestBatch(testDataSize);
   const testxs = testData.xs.reshape([testDataSize, IMAGE_WIDTH, IMAGE_HEIGHT, 1]);
   const labels = testData.labels.argMax([-1]);
   const preds = model.predict(testxs).argMax([-1]);
+  console.log(data)
+  
 
   testxs.dispose();
   console.log(preds)
