@@ -1,9 +1,6 @@
 console.log('Hello TensorFlow');
 
-/**
- * Get the car data reduced to just the variables we are interested
- * and cleaned of missing data.
- */
+
 async function getData() {
     const carsDataReq = await fetch('https://storage.googleapis.com/tfjs-tutorials/carsData.json');
     const carsData = await carsDataReq.json();
@@ -34,7 +31,7 @@ async function run() {
         }
     );
 
-    // More code will be added below
+
 
     // Create the model
     const model = createModel();
@@ -69,15 +66,9 @@ function createModel() {
     return model;
 }
 
-/**
-* Convert the input data to a tensors that we can use for machine 
-* learning. We will also do the important best practices of _shuffling_
-* the data and _normalizing_ the data
-* MPG on the y-axis.
-*/
+
 function convertToTensor(data) {
-    // Wrapping these calculations in a tidy will dispose any 
-    // intermediate tensors.
+
 
     return tf.tidy(() => {
         // Step 1. Shuffle the data    
@@ -137,9 +128,7 @@ async function trainModel(model, inputs, labels) {
 function testModel(model, inputData, normalizationData) {
     const { inputMax, inputMin, labelMin, labelMax } = normalizationData;
 
-    // Generate predictions for a uniform range of numbers between 0 and 1;
-    // We un-normalize the data by doing the inverse of the min-max scaling 
-    // that we did earlier.
+   
     const [xs, preds] = tf.tidy(() => {
 
         const xs = tf.linspace(0, 1, 100);
