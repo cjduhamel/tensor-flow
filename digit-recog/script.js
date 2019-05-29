@@ -142,6 +142,7 @@ function getModel() {
       shuffle: true,
       callbacks: fitCallbacks
     });
+    
   }
   
   const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
