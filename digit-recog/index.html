@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow.js Tutorial</title>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+  <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <!-- Import tfjs-vis -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+
+  <!-- Import the data file -->
+  <script src="data.js" type="module"></script>
+
+  <!-- Import the main script file -->
+  <script src="script.js" type="module"></script>
+
+  <script src="script.js" type="text/javascript"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Digit Recog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Digits<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">How it works</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="jumbotron col-lg-8">
+      <h1 class="display-4 col">Digit Recognition</h1>
+      <p class="lead">Did you ever wonder if you could find a computer that would recognize a number that you wrote WITH
+        YOUR HANDS? Well look no further because Google has that already. Did you want to see how it works, well you can
+        see that here.</p>
+      <hr class="my-4">
+      <p>If you look to the left you will see a cool little pannel the info on the training and predicting of the
+        network.</p>
+      <br>
+      <br>
+      <p>Haha, you are kinda dumb. It's to the right</p>
+      <a class="btn btn-primary btn-lg" onclick="run()" href="https://www.tensorflow.org/" role="button">Learn more</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <img src="./digit.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">This is an example of what the computer will be analyzing. It is a 28x28 grid</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="./chart.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">This looks a little like what the neural network is doing when predicting what number
+            your digit was.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button onclick="run()">Call the function</button> -->
+  <style>
+    .parallax-container {
+      height: 600px;
+
+    }
+
+    body {
+      background-color: grey darken-4
+    }
+
+    hr.style-two {
+      border: 0;
+      z-index: 3;
+      height: 6px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(250, 143, 43), rgba(0, 0, 0, 0));
+    }
+
+    .separator {
+      animation: separator-width 2.5s ease-out forwards;
+    }
+  </style>
+  <!-- Header -->
+  <div class="col-9">
+    <nav class=" grey darken-4">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">TensorFlowJs Digit Recognition</a>
+      </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="parallax-container center valign-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 white-text">
+            <img src="https://avatars1.githubusercontent.com/u/15658638?s=280&v=4" height="200">
+            <h2 class="white-text orange-text "> Aiden Clark And CJ DuHamel</h2>
+            <h4> Made using TensorFlowJs </h4>
+            <hr id="separator" class="seperator style-two">
+          </div>
+        </div>
+      </div>
+
+      <div class="parallax">
+        <img
+          src="https://3.bp.blogspot.com/-b2mpEqE3PfU/XG3XuPK0aqI/AAAAAAAAGZI/yedDX-lmyVAiKbdqB7QHVut-OzQQeupPACHMYCw/s1600/weframes-artificial-neural-network-ann-in-machine-learning.jpg">
+      </div>
+
+    </div>
+
+    <div class="row grey darken-4 white-text m-0">
+      <div class="container">
+        <div class="col m4 s12">
+          <div class="icon-block">
+            <h2 class="center orange-text">
+              <i class="material-icons">flash_on</i>
+            </h2>
+            <h5 class="center">Defining the Model</h5>
+            <p class="light">
+              The first step was to create a model that we could run our training data agianst. This encompassed setting
+              paramaiters, defineing layers, and calculating loss.
+            </p>
+          </div>
+
+        </div>
+        <div class="col m4 s12">
+          <div class="icon-block">
+            <h2 class="center orange-text">
+              <i class="material-icons">schedule</i>
+            </h2>
+            <h5 class="center">Training the Model</h5>
+            <p class="light">
+              After fetching the training data, we reshape the image to a 2dVector which is then ran against our model.
+              For every prediction loss is calculated and the process is reapeated. After 110 epochs or repitions of
+              feeding batches of 30, The model is sufficently trained for use.
+            </p>
+          </div>
+        </div>
+        <div class="col m4 s12">
+          <div class="icon-block">
+            <h2 class="center orange-text">
+              <i class="material-icons">settings</i>
+            </h2>
+            <h5 class="center">Predicting</h5>
+            <p class="light">
+              After the training the model(110 epochs or so) We then feed in one and one only example. This will then be
+              predicted and checked for accuracy
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parallax-container center valign-wrapper">
+      <div class="parallax"><img
+          src="https://images.unsplash.com/photo-1537884944318-390069bb8665?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
+      </div>
+
+      <div class="container white-text">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row grey darken-4 white-text m-0">
+      <div class="section">
+        <div class="row">
+          <div class="col-6 mx-auto text-center ">
+            <h6>The input is a handrawn digit in a 28 by 28 pixel grid. This is fed into our model and broken up into
+              mulitple 2d vectors. The models job is essentailly to break the handdrawn digit into recognizable bits by recognizing which pixels are activated(white) and which are not. </h1>
+              
+              <div class="">
+                 <hr id="separator" class="seperator style-two"> 
+                <img src="https://cdn-images-1.medium.com/max/1600/1*nojdQynTFPIU1ymt8WYQUg.png" height="300px">
+              </div>
+          </div>
+          <div class="col-6 mx-auto text-center">
+            <h6 class="mr-5">With a total of 784 input nodes each pixle gets put through 2 hidden layers, in which
+              weights functions are applied. After a prediciton is made, it gets compared to the correct answer and loss
+              gets calculated. </h1>
+              <hr id="separator" class="seperator style-two">
+              <img class="mr-5"
+                src="https://hips.hearstapps.com/pop.h-cdn.co/assets/17/40/1280x800/gallery-1507309070-screen-shot-2017-10-06-at-125555-pm.png?resize=480:*"
+                height="300px">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parallax-container center valign-wrapper">
+      <div class="parallax">
+        <img src="https://i.ytimg.com/vi/qLg3LT1io8Q/maxresdefault.jpg">
+      </div>
+
+      <div class="container white-text">
+        <div class="row">
+          <div class="col s12">
+            <h5>This project is mostly made using mongoDB and EJS</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <!-- <footer class="page-footer orange">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Contact Us</h5>
+        <p class="grey-text text-lighten-4">
+            Im just kidding im not putting my contact info on this 
+        </p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Settings</h5>
+        <ul>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 4</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Connect</h5>
+        <ul>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 4</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2017 Copyright Text
+    </div>
+  </div>
+</footer> -->
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('.parallax').parallax();
+    });
+  </script>
+</body>
+
+</html>
